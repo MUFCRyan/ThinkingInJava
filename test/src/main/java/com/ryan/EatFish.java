@@ -1,7 +1,7 @@
 package com.ryan;
 
-import com.ryan.genericity.generator.Generator;
-import com.ryan.genericity.generator.Generators;
+import com.ryan.generic.generator.Generator;
+import com.ryan.generic.generator.Generators;
 import com.ryan.util.Util;
 
 import java.util.ArrayList;
