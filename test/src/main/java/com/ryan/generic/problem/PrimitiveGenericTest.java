@@ -2,8 +2,8 @@ package com.ryan.generic.problem;
 
 import com.ryan.util.Util;
 
-import net.mindview.util.Generator;
-import net.mindview.util.RandomGenerator;
+import com.ryan.net.mindview.util.Generator;
+import com.ryan.net.mindview.util.RandomGenerator;
 
 /**
  * Created by MUFCRyan on 2017/4/24.
