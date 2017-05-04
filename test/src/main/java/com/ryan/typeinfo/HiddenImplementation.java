@@ -1,5 +1,5 @@
 package com.ryan.typeinfo;//: typeinfo/HiddenImplementation.java
-// Sneaking around package access.
+// Sneaking around package com.source.access.
 import com.ryan.typeinfo.interfacea.*;
 import com.ryan.typeinfo.packageaccess.*;
 import java.lang.reflect.*;
