@@ -21,4 +21,6 @@ public class Util {
     public static void print(Object o){
         System.out.print(o);
     }
+
+    public static void format(String s, Object o){System.out.format(s, o);}
 }

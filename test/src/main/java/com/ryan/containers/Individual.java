@@ -1,7 +1,8 @@
 package com.ryan.containers;
 
-import com.ryan.holding.MapOfList;
-import com.source.typeinfo.pets.Pet;
+import com.ryan.containers.pets.MapOfList;
+import com.ryan.containers.pets.Pet;
+import com.ryan.util.Util;
 
 import java.util.List;
 import java.util.Set;
@@ -68,8 +69,9 @@ class IndividualTest{
         Set<Individual> pets = new TreeSet<>();
         for (List<? extends Pet> list : MapOfList.petPeople.values()) {
             for (Pet pet : list) {
-                //pets.add(pet);
+                pets.add(pet);
             }
         }
+        Util.println(pets);
     }
 }

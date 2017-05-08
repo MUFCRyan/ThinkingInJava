@@ -1,10 +1,7 @@
 //: holding/MapOfList.java
-package com.ryan.holding;
+package com.ryan.containers.pets;
 
-import com.ryan.typeinfo.pets.Person;
-import com.ryan.typeinfo.pets.*;
 import com.ryan.util.Util;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +20,7 @@ public class MapOfList {
       Arrays.asList(
        new Pug("Louie aka Louis Snorkelstein Dupree"),
        new Cat("Stanford aka Stinky el Negro"),
-       new Cat("Pinkola")));	
+       new Cat("Pinkola")));
     petPeople.put(new Person("Luke"),
       Arrays.asList(new Rat("Fuzzy"), new Rat("Fizzy")));
     petPeople.put(new Person("Isaac"),
