@@ -1,5 +1,7 @@
 package com.ryan.util;
 
+import com.ryan.io.Directory;
+
 public class Util {
 
     public static void println(){
@@ -23,4 +25,11 @@ public class Util {
     }
 
     public static void format(String s, Object o){System.out.format(s, o);}
+
+    public static String getSpecifiedFilePath(String fileName){
+        Directory.TreeInfo treeInfo = Directory.walk(".", fileName);
+        if (treeInfo.files.size() > 0)
+            return treeInfo.files.get(1).getPath();
+        return null;
+    }
 }

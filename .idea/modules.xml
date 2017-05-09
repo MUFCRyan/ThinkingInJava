@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThinkingInJava.iml" filepath="$PROJECT_DIR$/.idea/modules/ThinkingInJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThinkingInJava.iml" filepath="$PROJECT_DIR$/.idea/modules/ThinkingInJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/source/source.iml" filepath="$PROJECT_DIR$/.idea/modules/source/source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/source/source.iml" filepath="$PROJECT_DIR$/.idea/modules/source/source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test/test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test/test.iml" />
     </modules>
   </component>
