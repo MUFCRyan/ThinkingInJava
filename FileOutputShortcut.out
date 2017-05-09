@@ -1,0 +1,30 @@
+1: package com.ryan.io;
+1: 
+1: import com.ryan.util.Util;
+1: 
+1: import java.io.BufferedReader;
+1: import java.io.IOException;
+1: import java.io.PrintWriter;
+1: import java.io.StringReader;
+1: 
+1: /**
+1:  * Created by MUFCRyan on 2017/5/9.
+1:  * Book Page542 Chapter 18.6.4 文本文件输出的快捷方式
+1:  */
+1: 
+1: public class FileOutputShortcut {
+1:     static String file = "FileOutputShortcut.out";
+1:     public static void main(String[] args) throws IOException {
+1:         String filePath = Util.getSpecifiedFilePath("FileOutputShortcut.java");
+1:         BufferedReader reader = new BufferedReader(new StringReader(BufferedInputFile.read(filePath)));
+1:         // Here's the shortcut
+1:         PrintWriter out = new PrintWriter(file);
+1:         int lineCount = 1;
+1:         String line;
+1:         while ((line = reader.readLine()) != null)
+1:             out.println(lineCount + ": " + line);
+1:         out.close();
+1:         // Show the stored file
+1:         Util.println(BufferedInputFile.read(file));
+1:     }
+1: }

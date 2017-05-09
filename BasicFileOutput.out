@@ -1,0 +1,32 @@
+1: package com.ryan.io;
+2: 
+3: import com.ryan.util.Util;
+4: 
+5: import java.io.BufferedReader;
+6: import java.io.BufferedWriter;
+7: import java.io.FileWriter;
+8: import java.io.IOException;
+9: import java.io.PrintWriter;
+10: import java.io.StringReader;
+11: 
+12: /**
+13:  * Created by MUFCRyan on 2017/5/9.
+14:  * Book Page542 Chapter 18.6.4 基本文件输出
+15:  */
+16: 
+17: public class BasicFileOutput {
+18:     static String file = "BasicFileOutput.out";
+19:     public static void main(String[] args) throws IOException {
+20:         String filePath = Util.getSpecifiedFilePath("BasicFileOutput.java");
+21:         BufferedReader reader = new BufferedReader(new StringReader(BufferedInputFile.read(filePath)));
+22:         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+23:         int lineCount = 1;
+24:         String line;
+25:         while ((line = reader.readLine()) != null){
+26:             out.println(lineCount++ + ": " + line);
+27:         }
+28:         out.close();
+29:         // Show the stored file
+30:         Util.println(BufferedInputFile.read(file));
+31:     }
+32: }
