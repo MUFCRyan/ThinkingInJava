@@ -13,3 +13,5 @@ C
 BasicFileOutput.out,5\7\579cd875561a38527701999023f00ecb8bb5fdbb
 9
 	data2.txt,c\9\c90b11b055161bb6f9e4e2532e45afbf1cce8a87
+8
+file.txt,5\4\5436437fa01a7d3e41d46741da54b451446774ca
