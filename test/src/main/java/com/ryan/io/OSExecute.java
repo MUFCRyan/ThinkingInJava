@@ -14,14 +14,15 @@ public class OSExecute {
     public static void command(String command){
         boolean error = false;
         try {
-            Process process = new ProcessBuilder(command.split(" ")).start();
-            BufferedReader results = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String[] result = command.split(" ");
+            Process process = new ProcessBuilder(result).start();
+            BufferedReader results = new BufferedReader(new InputStreamReader(process.getInputStream(), "gbk"));
             String line;
             while ((line = results.readLine()) != null){
                 Util.println(line);
             }
             // Report errors and return nonzero value to calling process if there are problems
-            BufferedReader errors = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            BufferedReader errors = new BufferedReader(new InputStreamReader(process.getErrorStream(), "gbk"));
             while ((line = errors.readLine()) != null){
                 Util.println(line);
                 error = true;

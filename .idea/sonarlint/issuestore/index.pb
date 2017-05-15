@@ -15,3 +15,16 @@ C
 	data2.txt,c\9\c90b11b055161bb6f9e4e2532e45afbf1cce8a87
 8
 file.txt,5\4\5436437fa01a7d3e41d46741da54b451446774ca
+9
+	Blip3.out,e\3\e37f577e5d952f992bf10ce3954c8e4aecd46361
+<
+CADState.out,8\3\838e840a55c3d852cfebc70d300164fff8c96e59
+8
+worm.out,0\9\09d0ebfde3efa9fd3ce9cc7dafa1573d2bcb9a19
+9
+	Logon.out,5\6\562461457021cd87ea69a463351f8cab06feaa1f
+:
+
+people.xml,f\0\f08c0bd73eef325200ca73d74d1d4258dbc26ede
+9
+	Blips.out,d\d\dd7fda22f18b9185fa95e8df5463c249b68d973b
