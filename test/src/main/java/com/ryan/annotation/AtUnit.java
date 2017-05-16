@@ -4,7 +4,6 @@ import com.ryan.annotation.custom.TestObjectCleanup;
 import com.ryan.annotation.custom.TestObjectCreate;
 import com.ryan.io.BinaryFile;
 import com.ryan.io.ProcessFiles;
-import com.ryan.net.mindview.atunit.ClassNameFinder;
 import com.ryan.net.mindview.atunit.Test;
 import com.ryan.util.Util;
 
@@ -113,7 +112,7 @@ public class AtUnit implements ProcessFiles.Strategy {
         void addIfTestMethod(Method method) {
             if (method.getAnnotation(Test.class) == null)
                 return;
-            if (method.getReturnType().equals(boolean.class) || method.getReturnType().equals(void.class)) {
+            if (!method.getReturnType().equals(boolean.class) || method.getReturnType().equals(void.class)) {
                 throw new RuntimeException("@Test method must return boolean or void");
             }
             method.setAccessible(true);
