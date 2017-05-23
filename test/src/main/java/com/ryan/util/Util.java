@@ -2,6 +2,8 @@ package com.ryan.util;
 
 import com.ryan.io.Directory;
 
+import java.util.Locale;
+
 public class Util {
 
     public static void println() {
@@ -26,6 +28,14 @@ public class Util {
 
     public static void format(String s, Object o) {
         System.out.format(s, o);
+    }
+
+    public static void printf(String var1, Object... var2){
+        System.out.printf(var1, var2);
+    }
+
+    public static void printf(Locale var1, String var2, Object... var3){
+        System.out.printf(var1, var2, var3);
     }
 
     public static String getSpecifiedFilePath(String fileName) {

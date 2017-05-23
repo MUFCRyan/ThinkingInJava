@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -101,10 +103,30 @@ class Assembler implements Runnable{
                 mFinishingQueue.put(mCar);
             }
         } catch (InterruptedException e){
-
+            Util.println("Exiting Assembler via interrupt");
         } catch (BrokenBarrierException e) {
-            e.printStackTrace();
+            // This one we want to know about
+            throw new RuntimeException(e);
         }
+        Util.println("Assembler off");
+    }
+}
+
+class Reporter implements Runnable {
+    private CarQueue mCarQueue;
+    public Reporter(CarQueue carQueue){
+        mCarQueue = carQueue;
+    }
+    @Override
+    public void run() {
+        try {
+            while (!Thread.interrupted()){
+                Util.print(mCarQueue.take());
+            }
+        } catch (InterruptedException e){
+            Util.println("Exiting Reporter via interrupt");
+        }
+        Util.println("Reporter off");
     }
 }
 
@@ -209,9 +231,24 @@ class RobotPool {
         hire(robotType, assembler); // Try again, recursively
     }
     public synchronized void release(Robot robot){
-
+        add(robot);
     }
 }
 
 public class CarBuilder {
+    public static void main(String[] args) throws InterruptedException {
+        CarQueue chassisQueue = new CarQueue()
+                , finishingQueue = new CarQueue();
+        ExecutorService exec = Executors.newCachedThreadPool();
+        RobotPool robotPool = new RobotPool();
+        exec.execute(new EngineRobot(robotPool));
+        exec.execute(new DriveTrainRobot(robotPool));
+        exec.execute(new WheelRobot(robotPool));
+        exec.execute(new Assembler(chassisQueue, finishingQueue, robotPool));
+        exec.execute(new Reporter(finishingQueue));
+        // Start everything running by producing chassis
+        exec.execute(new ChassisBuilder(chassisQueue)); // TODO: 2017/5/23 不明白整个流程是如何启动的
+        TimeUnit.SECONDS.sleep(7);
+        exec.shutdownNow();
+    }
 }
