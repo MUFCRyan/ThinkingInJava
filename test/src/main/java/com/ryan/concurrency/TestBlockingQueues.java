@@ -25,7 +25,7 @@ class LiftOffRunner implements Runnable {
         try {
             rockets.put(liftOff);
         } catch (InterruptedException e) {
-            Util.println("Interrupted during put()");
+            Util.println("Interrupted duration put()");
         }
     }
     @Override

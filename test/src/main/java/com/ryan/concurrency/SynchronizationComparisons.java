@@ -18,13 +18,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 abstract class Accumulator {
     public static long cycles = 50000L;
-    // Number of Modifiers and Readers during each test
+    // Number of Modifiers and Readers duration each test
     private static final int N = 4;
     public static ExecutorService sExec = Executors.newFixedThreadPool(N * 2);
     private static CyclicBarrier sBarrier = new CyclicBarrier(N * 2 + 1);
     protected volatile int index = 0;
     protected volatile long value = 0;
-    protected long during = 0;
+    protected long duration = 0;
     protected String id = "error";
     protected final static int SIZE = 100000;
     protected static int[] preLoaded = new int[SIZE];
@@ -75,11 +75,11 @@ abstract class Accumulator {
         } catch (Exception e){
             throw new RuntimeException(e);
         }
-        during = System.nanoTime() - start;
-        Util.printf("%-13s: %-13d\n", id, during);
+        duration = System.nanoTime() - start;
+        Util.printf("%-13s: %-13d\n", id, duration);
     }
     public static void report(Accumulator accumulator1, Accumulator accumulator2){
-        Util.printf("%-22s: %.2f\n", accumulator1.id + "/" + accumulator2.id, (double) accumulator1.during / (double) accumulator2.during);
+        Util.printf("%-22s: %.2f\n", accumulator1.id + "/" + accumulator2.id, (double) accumulator1.duration / (double) accumulator2.duration);
     }
 }
 
@@ -92,7 +92,7 @@ class BaseLine extends Accumulator {
             if (index >= SIZE)
                 index = 0;
         } catch (Exception e){
-            Util.println("preLoaded.length = " + preLoaded.length + "; index = " + index);
+            //Util.println("preLoaded.length = " + preLoaded.length + "; index = " + index);
         }
     }
     @Override
@@ -142,20 +142,23 @@ class LockTest extends Accumulator {
 
 class AtomicTest extends Accumulator {
     { id = "AtomicTest"; }
-    private AtomicInteger index = new AtomicInteger(0);
-    private AtomicLong value = new AtomicLong(0);
+    private AtomicInteger aIndex = new AtomicInteger(0);
+    private AtomicLong aValue = new AtomicLong(0);
     @Override
     public void accumulate() {
         // Oops! Relying on more than one Atomic at a time doesn't work. But it still give us a performance indicator
-        int i = index.getAndIncrement();
-        value.getAndAdd(preLoaded[i]);
-        if (++i >= SIZE)
-            index.set(0);
-    }
+        try {
+            int i = aIndex.getAndIncrement();
+            aValue.getAndAdd(preLoaded[i]);
+            if (++i >= SIZE)
+                aIndex.set(0);
+        } catch (Exception e) {
 
+        }
+    }
     @Override
     public long read() {
-        return value.get();
+        return aValue.get();
     }
 }
 

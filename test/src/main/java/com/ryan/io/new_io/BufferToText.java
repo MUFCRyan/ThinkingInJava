@@ -43,7 +43,7 @@ public class BufferToText {
         buffer.clear();
         channel.read(buffer);
         buffer.flip();
-        // Now it's correct because of has the right encode during the write
+        // Now it's correct because of has the right encode duration the write
         Util.println(buffer.asCharBuffer());
 
         // Use a CharBuffer to write through

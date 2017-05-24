@@ -75,7 +75,7 @@ class CustomerGenerator implements Runnable {
 class Teller implements Runnable, Comparable<Teller> {
     private static int counter = 0;
     private final int id = counter++;
-    // Customers served during this shift
+    // Customers served duration this shift
     private int customersServed = 0;
     private CustomerLine mLine;
     private boolean servingCustomerLine = true;
