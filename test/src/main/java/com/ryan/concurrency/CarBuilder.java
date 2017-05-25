@@ -247,7 +247,7 @@ public class CarBuilder {
         exec.execute(new Assembler(chassisQueue, finishingQueue, robotPool));
         exec.execute(new Reporter(finishingQueue));
         // Start everything running by producing chassis
-        exec.execute(new ChassisBuilder(chassisQueue)); // TODO: 2017/5/23 不明白整个流程是如何启动的
+        exec.execute(new ChassisBuilder(chassisQueue)); // 之前的流程启动后，Assembler 已经在等待队列内传过来 Car，ChassisBuilder 启动的作用就是不断往队列中添加 Car
         TimeUnit.SECONDS.sleep(7);
         exec.shutdownNow();
     }
